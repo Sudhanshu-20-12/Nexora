@@ -1,17 +1,26 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import '../css/app.css';
+
+import Login from './pages/customer/Login';
+import Register from './pages/customer/Register';
+import Home from './pages/customer/Home';
+import VendorRegister from './pages/vendor/VendorRegister';
 
 function App() {
     return (
-        <div className="min-h-screen flex items-center justify-center">
-            <h1 className="text-5xl font-bold text-blue-600">
-                Nexora Multi Vendor E-commerce
-            </h1>
+        <div className="font-sans">
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
+                    <Route path="/vendor/register" element={<VendorRegister />} />
+                </Routes>
+            </BrowserRouter>
         </div>
     );
 }
 
-createRoot(document.getElementById('app')).render(
-    <App />
-);
+createRoot(document.getElementById('app')).render(<App />);

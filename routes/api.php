@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\Admin\AdminController;
+use App\Http\Controllers\Api\ProductController;
 
 
 
@@ -83,3 +84,8 @@ Route::middleware(['auth:sanctum', 'role:admin'])->prefix('admin')->group(functi
     Route::get('/products', [AdminController::class, 'products']);
     Route::put('/products/{id}/status', [AdminController::class, 'updateProductStatus']);
 });
+
+// Public routes (bina login ke)
+Route::get('/categories', [CategoryController::class, 'index']);
+Route::get('/products', [ProductController::class, 'index']);
+Route::get('/products/{id}', [ProductController::class, 'show']);
